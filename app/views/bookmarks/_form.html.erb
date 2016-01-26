@@ -1,0 +1,4 @@
+<%= simple_form_for [@topic, @topic.bookmarks.new], id: 'new-bookmark-form', remote: true do |f| %>
+	<%= f.input :url %>
+	<%= f.submit %>
+<% end %>

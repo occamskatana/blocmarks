@@ -1,6 +1,7 @@
 <div class="row" id="single-topic">
 	<div class="col-md-8" id="title-column">
-		<%= topic.title %>
+		<h3><%= topic.title %> <%= link_to "New bookmark", new_topic_bookmark_path(topic), id:'new-bookmark-button', class: 'btn btn-xs btn-info', remote: true %><br /></h3>
+		<%= render topic.bookmarks %>
 	</div>
 
 	<div class="col-md-4">

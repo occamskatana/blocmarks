@@ -4,12 +4,13 @@ class TopicsController < ApplicationController
 
   def index
     @user = current_user
-    @topic = @user.topics.all
+    
   end
 
   def show
     @user = current_user
     @topic = @user.topic.find(params[:id])
+
   end
 
   def new
