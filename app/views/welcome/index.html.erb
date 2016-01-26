@@ -1,0 +1,23 @@
+<div class="container-fluid">
+	<div class="container" align="center">	
+		<h1> Welcome to Blocmarks </h1>
+		<% if user_signed_in? %>
+			<%= link_to "Get Started", " ", class: 'btn btn-success' %>
+		<% else %>
+			<%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success' %>
+		<% end %>
+	</div>
+
+	<br />
+
+	<div class="container welcome-info">
+		<div class="row">
+			<div class="col-md-6">
+				<p align="center">This is an app developed by John Carter to allow you to manage and share your bookmarks easily.</p>
+			</div>
+			<div class="col-md-6">
+				<p align="center">To learn more, visit <%= link_to "My GitHub", "https://github.com/occamskatana", class: 'btn btn-info' %> </p>
+			</div>
+		</div>
+	</div>
+</div>
