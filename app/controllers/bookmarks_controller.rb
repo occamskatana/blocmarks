@@ -28,6 +28,12 @@ class BookmarksController < ApplicationController
   end
 
   def edit
+  	@topic = Topic.find(params[:topic_id])
+  	@bookmark = @topic.bookmarks.find(params[:id])
+  	respond_to do |format|
+  		format.js
+  		format.html
+  	end
   end
 
   private

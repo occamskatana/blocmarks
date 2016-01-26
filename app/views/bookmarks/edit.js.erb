@@ -1,0 +1,1 @@
+$('#bookmark<%=@bookmark.id%>').hide().after("<%= j render partial: 'bookmarks/edit_form', locals:{topic: @topic, bookmark: @bookmark} %>");

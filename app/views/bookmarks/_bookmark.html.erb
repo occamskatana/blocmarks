@@ -1,8 +1,5 @@
 <div class="row-fluid" id="bookmark-row">
-		<div class="col-md-6" >
-			<%= bookmark.url %>
-		</div>
-		<div class="col-md-6" id="bookmark-buttons">
-			
+		<div class="col-md-9" align="center">
+			<div id="bookmark<%=bookmark.id%>"><%= bookmark.url %>|<%= link_to "Edit", edit_topic_bookmark_path(bookmark.topic, bookmark), class: 'btn btn-primary', remote: true %></div>
 		</div>
 </div>
