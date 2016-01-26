@@ -1,0 +1,7 @@
+<div class="form-wide">
+	<div class="topic-form">
+		<%= simple_form_for [@user, Topic.new], remote: true do |f| %>
+			<%= f.input :title %> <%= f.submit %>
+		<% end %>
+	</div>
+</div>

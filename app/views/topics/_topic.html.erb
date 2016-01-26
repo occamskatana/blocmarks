@@ -1,0 +1,11 @@
+<div class="row" id="single-topic">
+	<div class="col-md-8" id="title-column">
+		<%= topic.title %>
+	</div>
+
+	<div class="col-md-4">
+		<%= link_to "Delete", user_topic_path(@user, topic), class: 'btn btn-danger', method: :delete, remote: true %>
+	</div>
+</div>
+<br />
+	
