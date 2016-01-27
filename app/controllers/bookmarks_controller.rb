@@ -52,6 +52,21 @@ class BookmarksController < ApplicationController
   	end
   end
 
+  def destroy
+  	@bookmark = Bookmark.find(params[:id])
+
+  	if @bookmark.destroy
+  		flash[:notification] = "Boom. Destroyed"
+  	else
+  		flash[:notification] = "No dice"
+  	end
+
+  	respond_to do |format|
+  		format.js
+  		format.html {redirect_to user_topics_path(current_user)}
+  	end
+  end
+
   private
 
   def bookmark_params

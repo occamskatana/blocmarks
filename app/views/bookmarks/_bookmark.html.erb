@@ -1,5 +1,7 @@
-<div class="row-fluid" id="bookmark-row">
-		<div class="col-md-9" align="center">
-			<div id="bookmark<%=bookmark.id%>"><%= bookmark.url %>|<%= link_to "Edit", edit_topic_bookmark_path(bookmark.topic, bookmark), class: 'btn btn-primary', remote: true %></div>
+<div class="col-md-2 container-fluid">
+	<div id="bookmark<%=bookmark.id%>">
+		<%= bookmark.url %><br>
+		<%= link_to "Edit", edit_topic_bookmark_path(bookmark.topic, bookmark), class: 'btn btn-primary btn-xs', remote: true %>
+		<%= link_to "Delete", topic_bookmark_path(bookmark.topic, bookmark), method: :delete, class: 'btn btn-danger btn-xs', remote: true %>
 		</div>
 </div>
