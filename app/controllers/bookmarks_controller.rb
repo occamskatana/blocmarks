@@ -36,6 +36,22 @@ class BookmarksController < ApplicationController
   	end
   end
 
+  def update
+  	@bookmark = Bookmark.find(params[:id])
+  	@bookmark.assign_attributes(bookmark_params)
+
+  	if @bookmark.save
+  		flash[:notification] = "Your bookmark has been updated"
+  	else
+  		flash[:error] = "Your bookmark could not be updated"
+  	end
+
+  	respond_to do |format|
+  		format.js
+  		format.html {redirect_to user_topics_path(current_user)}
+  	end
+  end
+
   private
 
   def bookmark_params
