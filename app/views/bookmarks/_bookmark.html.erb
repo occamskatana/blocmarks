@@ -1,6 +1,6 @@
 <div class="col-md-3 container-fluid bookmark-container" id="bookmark-container<%=bookmark.id%>">
 	<div id="bookmark<%=bookmark.id%>" class="actual-bookmark-container">
-		<p><%= bookmark.url %><br></p>
+		<p><%= bookmark.url.titleize %><br></p>
 		<%= link_to "Edit", edit_topic_bookmark_path(bookmark.topic, bookmark), class: 'btn btn-primary btn-xs', remote: true %>
 		<%= link_to "Delete", topic_bookmark_path(bookmark.topic, bookmark), method: :delete, class: 'btn btn-danger btn-xs', remote: true %>
 		</div>

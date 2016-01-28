@@ -1,4 +1,4 @@
-<div class="form-wide">
+<div class="form-wide" id="new-topic-form-div">
 	<div class="topic-form">
 		<%= simple_form_for [@user, Topic.new], remote: true do |f| %>
 			<%= f.input :title %> <%= f.submit %>

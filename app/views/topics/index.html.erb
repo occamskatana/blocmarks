@@ -4,18 +4,17 @@
 		<h1 align="center">Topics</h1>
 		</div>
 	</div>
-
-
-	<br / >
-	<br />
-	<div class="container">
-		<div class="new-button">
-			<%= link_to "New Topic", new_user_topic_path, class: 'btn btn-success', remote: true %><br />
-		</div><br/>
-
-		<div class="container" id="topics-container">
-			<%= render @user.topics %>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="col-md-4" align="left">
+				<div id="new-topic-button-div">
+					<%= link_to "New Topic", new_user_topic_path, class: 'btn btn-success', id: 'new-topic-button', remote: true %><br />
+				</div><br/>
+			</div>
 		</div>
 
+	<div class="container" id="topics-container">
+		<%= render @user.topics %>
 	</div>
+</div>
 
