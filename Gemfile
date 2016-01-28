@@ -5,9 +5,9 @@ gem 'simple_form'
 gem 'bootstrap'
 gem 'devise'
 gem 'rails', '4.2.4'
-gem 'pry-rails'
-gem 'sqlite3'
 
+gem 'sqlite3'
+gem 'figaro'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -24,6 +24,13 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+group :production do 
+	gem 'pg'
+	gem 'rails_12factor'
+
+end
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -42,7 +49,7 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
+	gem 'pry-rails'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
