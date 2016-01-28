@@ -1,2 +1,2 @@
-$('#bookmark-edit-div').hide();
-$('#bookmark<%=@bookmark.id%>').replaceWith("<%= j render @bookmark%>");
+$('#bookmark-edit-div').remove();
+$('#bookmark-container<%=@bookmark.id%>').replaceWith("<%= j render @bookmark%>").show();

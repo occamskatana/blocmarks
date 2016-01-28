@@ -1,12 +1,12 @@
 <div class="row" id="topic<%=topic.id%>">
 	<div class="col-md-10" id="title-column">
 		<h3><%= topic.title %> | <%= link_to "New bookmark", new_topic_bookmark_path(topic), id:'new-bookmark-button', class: 'btn btn-xs btn-info', remote: true %><br /></h3>
-		<div class="row-fluid" id="bookmark-row">
-			<%= render topic.bookmarks %>
+		<div class="row-fluid bookmark-container-row" id="bookmark-row<%=topic.id%>">
+			<%= render topic.bookmarks %> &nbsp;
 		</div>
 	</div>
 
-	<div class="col-md-2">
+	<div class="col-md-2 topic-buttons">
 		<%= link_to "Delete Topic", user_topic_path(@user, topic), class: 'btn btn-danger', method: :delete, remote: true %>
 	</div>
 	<br />
