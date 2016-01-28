@@ -1,4 +1,5 @@
 class Mailgun < ApplicationMailer
+	
 	def send_simple_message
   RestClient.post "https://api:key-bd131155ae9e2604dc3a5708dd994460"\
   "@api.mailgun.net/v3/sandbox05d776b746f64263918757a69618409e.mailgun.org/messages",

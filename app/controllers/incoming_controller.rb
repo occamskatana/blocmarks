@@ -5,9 +5,6 @@ class IncomingController < ApplicationController
 
 	def create
 		puts "INCOMING PARAMS HERE: #{params}"
-
-		user = User.find(params[:sender])
-		topic = Topic.find(params[:title])
 		
 
 		head 200
