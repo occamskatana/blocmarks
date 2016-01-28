@@ -1,4 +1,4 @@
 $('#topic<%=@topic.id%>').show();
-$('.simple_form').remove();
+$('.simple_form').fadeOut(200);
 $('#bookmark-row<%=@topic.id%>').append("<%= j render(@bookmark) %>");
-$('#new-bookmark-button').fadeIn();
+$('#topic<%=@topic.id%>-new-button').fadeIn();

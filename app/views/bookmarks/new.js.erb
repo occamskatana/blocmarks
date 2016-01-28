@@ -1,1 +1,2 @@
-$('#topic<%=@topic.id%>').hide('#new-bookmark-button').after("<%= j render 'bookmarks/form' %>");
+$('#topic<%=@topic.id%>-new-button').hide();
+$('#topic<%=@topic.id%>-title-row').append("<%= j render 'bookmarks/form' %>");

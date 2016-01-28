@@ -1,6 +1,5 @@
-<div class="span-3" id="bookmark-form-div">
+
 	<%= simple_form_for [@topic, @topic.bookmarks.new], id: 'new-bookmark-form', remote: true do |f| %>
-		<%= f.input :url %>
-		<%= f.submit %>
+		<%= f.input :url, placeholder: "Enter URL Here", label: false %>
+		<%= f.button :submit, class: 'btn btn-success btn-xs' %>
 	<% end %>
-</div>
