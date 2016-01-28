@@ -6,7 +6,7 @@ gem 'bootstrap'
 gem 'devise'
 gem 'rails', '4.2.4'
 
-gem 'sqlite3'
+gem 'sqlite3', group: [:development, :test]
 gem 'figaro'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
