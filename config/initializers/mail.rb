@@ -3,7 +3,7 @@ ActionMailer::Base.smtp_settings = {
   address:           'smtp.mailgun.org',
   user_name:         ENV['MAILGUN_SMTP_LOGIN'],
   password:          ENV['MAILGUN_SMTP_PASSWORD'],
-  domain:            'www.monthlywe.com',
+  domain:            'app813a286be5504dee9715bbf73accac01.mailgun.org',
   authentication:    :plain,
   content_type:      'text/html'
 }
