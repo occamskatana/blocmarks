@@ -4,14 +4,14 @@ class IncomingController < ApplicationController
 
 
 	def create
-		puts "#{params[:sender]}"
+		
 
 		user = User.find(params[:sender])
 		topic = Topic.find(params[:subject])
 		url = ('body-plain')
 
 		if user = nil
-			new_user = User.create!(email: :sender)
+			new_user = User.create!(params[:sender])
 		elsif topic = nil
 			new_user.topic.create!(params[:subject])
 		else
