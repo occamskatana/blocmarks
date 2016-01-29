@@ -14,15 +14,14 @@ class IncomingController < ApplicationController
 			new_user.topics.create!(title: params[:subject])
 
 		else user != nil 
-
-			user = User.find_by email: "#{params[:sender]}"
-			topic =	user.topics.create!(title: params[:subject])
-			topic.bookmarks.create!(url: url)
-
+			if Topic.exists?(title: "#{params[:subject]}")
+				topic = Topic.find_by title: "#{params[:subject]}"
+				topic.bookmarks.create!(url: url)
+			else
+				new_topic =	user.topics.create!(title: params[:subject])
+				new_topic.bookmarks.create!(url: url)
+			end
 		end
-
-		
-
 		head 200
 	end
 
