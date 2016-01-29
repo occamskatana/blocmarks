@@ -10,8 +10,8 @@ class IncomingController < ApplicationController
 
 		if user == nil
 
-			new_user = User.create!(email: params[:sender])
-			new_user.topic.create!(title: params[:subject])
+			new_user = User.create!(email: params[:sender], password: 'helloworld')
+			new_user.topics.create!(title: params[:subject])
 
 		else user != nil 
 
