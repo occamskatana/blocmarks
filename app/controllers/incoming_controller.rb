@@ -16,8 +16,8 @@ class IncomingController < ApplicationController
 		else user != nil 
 
 			user = User.find_by email: "#{params[:sender]}"
-			topic =	user.topic.create!(title: params[:subject])
-			topic.bookmark.create!(url: url)
+			topic =	user.topics.create!(title: params[:subject])
+			topic.bookmarks.create!(url: url)
 
 		end
 
