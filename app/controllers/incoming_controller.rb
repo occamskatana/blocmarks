@@ -4,7 +4,20 @@ class IncomingController < ApplicationController
 
 
 	def create
-		puts "INCOMING PARAMS HERE: #{params}"
+		puts "#{params[:sender], 'body-plain'}"
+
+		user = User.find(params[:sender])
+		topic = Topic.find(params[:subject])
+		url = ('body-plain')
+
+		if user = nil
+			new_user = User.create!(email: :sender)
+		elsif topic = nil
+			new_user.topic.create!(params[:subject])
+		else
+			topic.bookmarks.create!(params[:url])
+		end
+
 		
 
 		head 200
