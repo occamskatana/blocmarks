@@ -23,8 +23,8 @@ class IncomingController < ApplicationController
 
 		else user == nil && topic == nil
 
-			user = User.create!(params[:sender])
-			topic = user.topics.create!(params[:subject])
+			user = User.create!(email: params[:sender])
+			topic = user.topics.create!(title: params[:subject])
 			topic.bookmarks.create!(bookmark_params)
 
 		end
