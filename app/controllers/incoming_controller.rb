@@ -14,7 +14,9 @@ class IncomingController < ApplicationController
 			new_user = User.create!(email: params[:sender])
 		elsif topic == nil
 			new_user.topic.create!(title: params[:subject])
-		else
+		else user == nil && topic == nil
+			user = User.create!(params[:sender])
+			topic =Topic.create!(params[:subject])
 			topic.bookmarks.create!(bookmark_params)
 		end
 
