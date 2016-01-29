@@ -5,27 +5,19 @@ class IncomingController < ApplicationController
 
 	def create
 		
-
-		
-		
+		user = User.find_by email: "#{params[:sender]}"
 		url = (params['body-plain'])
 
-		if User.find_by email: "#{params[:sender]}" == nil
+		if user == nil
 
 			new_user = User.create!(email: params[:sender])
 			new_user.topic.create!(title: params[:subject])
 
-		elsif User.find_by email: "#{params[:sender]}" != nil 
+		else user != nil 
 
 			user = User.find_by email: "#{params[:sender]}"
 			topic =	user.topic.create!(title: params[:subject])
-			topic.bookmark.create!(bookmark_params)
-
-		else user == nil && topic == nil
-
-			user = User.create!(email: params[:sender])
-			topic = user.topics.create!(title: params[:subject])
-			topic.bookmarks.create!(bookmark_params)
+			topic.bookmark.create!(url: url)
 
 		end
 
