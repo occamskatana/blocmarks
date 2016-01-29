@@ -4,7 +4,7 @@ class IncomingController < ApplicationController
 
 
 	def create
-		puts "#{params[:sender], 'body-plain'}"
+		puts "#{params[:sender]}"
 
 		user = User.find(params[:sender])
 		topic = Topic.find(params[:subject])
