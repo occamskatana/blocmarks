@@ -10,20 +10,21 @@ class IncomingController < ApplicationController
 		
 		url = (params['body-plain'])
 
-		if User.find(params[:sender]) == nil
+		if User.find_by email: "#{params[:sender]}" == nil
 
 			new_user = User.create!(email: params[:sender])
 			new_user.topic.create!(title: params[:subject])
 
-		elsif Topic.find(params[:subject]) == nil
-
-			topic =	new_user.topic.create!(title: params[:subject])
+		elsif User.find_by email: "#{params[:sender]}" != nil && Topic.find_by title: "(#{params[:subject]})" == nil
+			
+			user = User.find_by email: "#{params[:sender]}"
+			topic =	user.topic.create!(title: params[:subject])
 			topic.bookmark.create!(bookmark_params)
 
 		else user == nil && topic == nil
 
 			user = User.create!(params[:sender])
-			topic =Topic.create!(params[:subject])
+			topic = user.topics.create!(params[:subject])
 			topic.bookmarks.create!(bookmark_params)
 
 		end
