@@ -15,7 +15,7 @@ class IncomingController < ApplicationController
 			new_user = User.create!(email: params[:sender])
 			new_user.topic.create!(title: params[:subject])
 
-		elsif User.find_by email: "#{params[:sender]}" != nil && Topic.find_by title: "#{params[:subject]}" == nil
+		elsif User.find_by email: "#{params[:sender]}" != nil 
 
 			user = User.find_by email: "#{params[:sender]}"
 			topic =	user.topic.create!(title: params[:subject])
