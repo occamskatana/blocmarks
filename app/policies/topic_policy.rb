@@ -1,0 +1,6 @@
+class TopicPolicy < ApplicationPolicy
+
+
+
+
+end
