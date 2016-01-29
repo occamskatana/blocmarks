@@ -8,14 +8,14 @@ class IncomingController < ApplicationController
 
 		user = User.find(params[:sender])
 		topic = Topic.find(params[:subject])
-		url = ('body-plain')
+		url = (params['body-plain'])
 
-		if user = nil
-			new_user = User.create!(params[:sender])
-		elsif topic = nil
-			new_user.topic.create!(params[:subject])
+		if user == nil
+			new_user = User.create!(email: params[:sender])
+		elsif topic == nil
+			new_user.topic.create!(title: params[:subject])
 		else
-			topic.bookmarks.create!(params[:url])
+			topic.bookmarks.create!(bookmark_params)
 		end
 
 		
@@ -23,5 +23,9 @@ class IncomingController < ApplicationController
 		head 200
 	end
 
+private
 
+	def bookmark_params
+		params.require(:bookmark).permit(:url, :topic)
+	end
 end
