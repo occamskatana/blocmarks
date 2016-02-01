@@ -1,6 +1,17 @@
 <div class="col-md-3 container-fluid bookmark-container" id="bookmark-container<%=bookmark.id%>">
 	<div id="bookmark<%=bookmark.id%>" class="actual-bookmark-container">
 		<p><%= bookmark.url.titleize %><br></p>
+		<div>
+		  <% if like = current_user.liked(bookmark) %>
+		    <%= link_to bookmark_like_path(bookmark, like) , class: 'btn btn-danger', method: :delete do %>
+		      <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unlike
+		    <% end %>
+		  <% else %>
+		    <%= link_to [bookmark, Like.new], class: 'btn btn-primary', method: :post do %>
+		      <i class="glyphicon glyphicon-star"> </i>&nbsp; Like
+		    <% end %>
+		  <% end %>
+		</div>
 		<%= link_to "Edit", edit_topic_bookmark_path(bookmark.topic, bookmark), class: 'btn btn-primary btn-xs', remote: true %>
 		<%= link_to "Delete", topic_bookmark_path(bookmark.topic, bookmark), method: :delete, class: 'btn btn-danger btn-xs', remote: true %>
 		</div>
