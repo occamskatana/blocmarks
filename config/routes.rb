@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
  
 
+  get 'users/show'
+
   post :incoming, to: 'incoming#create'
 
   devise_for :users, controllers: {registrations: 'registrations'}
+  resources :users, only: [:show]
 
   resources :users, only: [:show] do
   	resources :topics

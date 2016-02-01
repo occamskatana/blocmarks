@@ -1,6 +1,5 @@
-<% if policy(Like.new.create?) %>
-  <% if bookmark.likes.where(user_id: current_user.id, bookmark_id: bookmark.id) %>
-    <%= link_to bookmark_like_path(bookmark, @like), class: 'btn btn-danger', method: :delete do %>
+  <% if like = current_user.liked(bookmark) %>
+    <%= link_to [bookmark, like], class: 'btn btn-danger', method: :delete do %>
       <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unlike
     <% end %>
   <% else %>
@@ -8,4 +7,4 @@
       <i class="glyphicon glyphicon-star"> </i>&nbsp; Like
     <% end %>
   <% end %>
-<% end %>
+
