@@ -17,13 +17,14 @@ class BookmarksController < ApplicationController
   	@bookmark = @topic.bookmarks.create!(bookmark_params)
 
   	if @bookmark.save
+      @bookmark.update_attributes(user_id: current_user.id)
   		flash[:notification] = "Success!"
   	else
   		flash[:error] = "Not Success!"
   	end
   	respond_to do |format|
   		format.js
-  		format.html {redirect_to user_topics_path(current_user)}
+  		format.html {:back}
   	end
   end
 
@@ -48,7 +49,7 @@ class BookmarksController < ApplicationController
 
   	respond_to do |format|
   		format.js
-  		format.html {redirect_to user_topics_path(current_user)}
+  		format.html {redirect_to :back}
   	end
   end
 
@@ -64,13 +65,13 @@ class BookmarksController < ApplicationController
 
   	respond_to do |format|
   		format.js
-  		format.html {redirect_to user_topics_path(current_user)}
+  		format.html {redirect_to :back}
   	end
   end
 
   private
 
   def bookmark_params
-  	params.require(:bookmark).permit(:url, :topic)
+  	params.require(:bookmark).permit(:url, :topic, :user)
   end
 end

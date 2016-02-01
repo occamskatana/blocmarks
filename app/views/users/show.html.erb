@@ -1,2 +1,38 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container-fluid">
+	<div class="page-header">
+		<h2 align="center"><%= @user.username %></h2>
+	</div>
+	<br>
+
+	<div class="container">
+		<h3 align="center">My Blocmarks</h3>
+		<% @user.bookmarks.each do |b| %>
+			<div class="row-fluid">
+				<div class="col-md-3 well user-show-bookmarks-container">
+					<h4 align="center"><%= b.url.titleize %></h4>
+					<h5 align="center"><strong>Topic: </strong><%= b.topic.title.titleize %></h5><br>
+					<div align="center"><%= link_to "Delete", bookmark_path(b), class: 'btn btn-danger', method: :delete %>
+					</div>
+				</div>
+			</div>
+			<% end %>
+	</div>
+
+		<br />
+		<br>
+	<div class="container">
+		<h3 align="center">My Likes</h3>
+		<% @user.likes.each do |l| %>						
+			<div class="row-fluid">
+				<div class="col-md-3 well likes-container">
+					<h4 align="center"><%= l.bookmark.url.titleize %></h4>
+					<h5 align="center"><strong>User: </strong><%= l.user.username.titleize %></h5><br />
+					<div align="center"><%= link_to bookmark_like_path(l.bookmark, l), class: 'btn btn-danger', method: :delete do%>
+						<i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unlike
+						<% end %>
+					</div>
+				</div>
+			<% end %>
+			</div>
+	</div>
+</div>
