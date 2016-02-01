@@ -5,7 +5,7 @@ gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'rails', '4.2.4'
-
+gem 'pundit'
 gem 'sqlite3', group: [:development, :test]
 gem 'figaro'
 gem 'sass-rails', '~> 5.0'

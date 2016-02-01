@@ -15,23 +15,23 @@ class ApplicationPolicy
   end
 
   def create?
-    user.present? && (record.user == user)
+    user.present? && record.user == user
   end
 
   def new?
-    create?
+    user.present?
   end
 
   def update?
-    user.present? && (record.user == user)
+    user.present? && record.user == user
   end
 
   def edit?
-    update?
+    user.present? && record.user == user
   end
 
   def destroy?
-    user.present? && (record.user == user)
+    user.present? && record.user == user
   end
 
   def scope

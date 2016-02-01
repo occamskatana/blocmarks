@@ -1,40 +1,54 @@
 class BookmarksController < ApplicationController
-  def show
-  end
+  
 
   def new
   	@topic = Topic.find(params[:topic_id])
   	@bookmark = @topic.bookmarks.new
-
-  	respond_to do |format|
-  		format.js
-  		format.html {redirect_to :back}
+     if @topic.user.id == current_user.id
+    	respond_to do |format|
+    		format.js
+    		format.html {redirect_to :back}
+      end
+    else 
+      flash[:error] = "not authorized"
+      redirect_to :back
+    
   	end
   end
 
   def create
   	@topic = Topic.find(params[:topic_id])
   	@bookmark = @topic.bookmarks.create!(bookmark_params)
-
-  	if @bookmark.save
-      @bookmark.update_attributes(user_id: current_user.id)
-  		flash[:notification] = "Success!"
-  	else
-  		flash[:error] = "Not Success!"
-  	end
-  	respond_to do |format|
-  		format.js
-  		format.html {:back}
-  	end
+    
+    if @topic.user.id == current_user.id
+    	if @bookmark.save
+        @bookmark.update_attributes!(user_id: current_user.id)
+    		flash[:notification] = "Success!"
+    	else
+    		flash[:error] = "Not Success!"
+    	end
+    	respond_to do |format|
+    		format.js
+    		format.html {:back}
+    	end
+    else 
+      flash[:error] = "not authorized"
+      redirect_to :back
+    end
   end
 
   def edit
   	@topic = Topic.find(params[:topic_id])
   	@bookmark = @topic.bookmarks.find(params[:id])
-  	respond_to do |format|
-  		format.js
-  		format.html
-  	end
+    
+    if @topic.user.id == current_user.id
+    	respond_to do |format|
+    		format.js
+    		format.html
+    	end
+    else
+      redirect_to :back
+    end
   end
 
   def update
@@ -54,19 +68,23 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
+    @topic = Topic.find(params[:topic_id])
   	@bookmark = Bookmark.find(params[:id])
     
+    if @topic.user.id == current_user.id  
+    	if @bookmark.destroy
+    		flash[:notification] = "Boom. Destroyed"
+    	else
+    		flash[:notification] = "No dice"
+    	end
 
-  	if @bookmark.destroy
-  		flash[:notification] = "Boom. Destroyed"
-  	else
-  		flash[:notification] = "No dice"
-  	end
-
-  	respond_to do |format|
-  		format.js
-  		format.html {redirect_to :back}
-  	end
+    	respond_to do |format|
+    		format.js
+    		format.html {redirect_to :back}
+    	end
+    else
+      redirect_to :back
+    end
   end
 
   private

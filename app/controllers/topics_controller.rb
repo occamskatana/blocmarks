@@ -15,6 +15,7 @@ class TopicsController < ApplicationController
   def new
     @user = current_user
     @topic = Topic.new
+    authorize @topic
     respond_to do |format|
       format.js
       format.html
@@ -25,8 +26,9 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @user = current_user
+    @user = User.find(params[:user_id])
     @topic = @user.topics.create!(topic_params)
+   
 
     if @topic.save
       flash[:notification] = "Saved"
@@ -43,7 +45,8 @@ class TopicsController < ApplicationController
   def destroy
     @user = User.find(params[:user_id])
     @topic = @user.topics.find(params[:id])
-
+    authorize @topic
+    
     if @topic.destroy
       flash[:notification] = "Your Topic was Destroyed"
     else
